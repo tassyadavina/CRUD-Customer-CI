@@ -24,36 +24,42 @@
 				</div>
 				<?php endif; ?>
 
+				<!-- Card  -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/customer/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+
+						<a href="<?php echo site_url('admin/supplier/') ?>"><i class="fas fa-arrow-left"></i>
+							Back</a>
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url('admin/customer/add') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php base_url(" admin/supplier/edit") ?>" method="post"
+							enctype="multipart/form-data" >
+
+							<input type="hidden" name="id" value="<?php echo $supplier->supplier_id?>" />
+
 							<div class="form-group">
-								<label for="name">Customer ID</label>
-								<input class="form-control <?php echo form_error('customer_id') ? 'is-invalid':'' ?>"
-								 type="text" name="id" placeholder="Customer ID" />
+								<label for="name">Customer ID*</label>
+								<input class="form-control <?php echo form_error('supplier_id') ? 'is-invalid':'' ?>"
+								 type="number" name="supplier_id" placeholder="Supplier ID" value="<?php echo $supplier->supplier_id ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('customer_id') ?>
+									<?php echo form_error('supplier_id') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="name">Name</label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" min="0" placeholder="Customer Name" />
+								 type="text" name="name" min="0" placeholder="Supplier Name" value="<?php echo $supplier->name ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
 							</div>
 
-
 							<div class="form-group">
 								<label for="name">Address</label>
 								<input class="form-control <?php echo form_error('address') ? 'is-invalid':'' ?>"
-								 type="text" name="address" min="0" placeholder="Customer Address" />
+								 type="text" name="address" min="0" placeholder="Supplier Address" value="<?php echo $customer->address ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('address') ?>
 								</div>
@@ -64,6 +70,7 @@
 								<label for="name">Photo</label>
 								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
+								<input type="hidden" name="old_image" value="<?php echo $supplier->image ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('image') ?>
 								</div>
@@ -72,7 +79,7 @@
 							<!-- <div class="form-group">
 								<label for="name">Description*</label>
 								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-								 name="description" placeholder="Customer description..."></textarea>
+								 name="description" placeholder="Customer description..."><?php echo $supplier->description ?></textarea>
 								<div class="invalid-feedback">
 									<?php echo form_error('description') ?>
 								</div>
@@ -99,7 +106,6 @@
 
 		</div>
 		<!-- /#wrapper -->
-
 
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 

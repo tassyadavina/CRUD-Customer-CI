@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Customer_model extends CI_Model
+class Supplier_model extends CI_Model
 {
-    private $_table = "customer";
+    private $_table = "supplier";
 
-    public $customer_id;
+    public $supplier_id;
     public $name;
     public $address;
     // public $image = "default.jpg";
@@ -13,8 +13,8 @@ class Customer_model extends CI_Model
     public function rules()
     {
         return [
-            ['field' => 'customer_id',
-            'label' => 'Customer ID',
+            ['field' => 'supplier_id',
+            'label' => 'Supplier ID',
             'rules' => 'numeric'],
 
             ['field' => 'name',
@@ -34,13 +34,13 @@ class Customer_model extends CI_Model
     
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ["customer_id" => $id])->row();
+        return $this->db->get_where($this->_table, ["supplier_id" => $id])->row();
     }
 
     public function save()
     {
         $post = $this->input->post();
-        $this->customer_id = $post["id"];
+        $this->supplier_id = $post["id"];
         $this->name = $post["name"];
         $this->address = $post["address"];
         // $this->description = $post["description"];
@@ -50,15 +50,15 @@ class Customer_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->customer_id = $post["id"];
+        $this->supplier_id = $post["id"];
         $this->name = $post["name"];
         $this->address = $post["address"];
         // $this->description = $post["description"];
-        $this->db->update($this->_table, $this, array('customer_id' => $post['id']));
+        $this->db->update($this->_table, $this, array('supplier_id' => $post['id']));
     }
 
     public function delete($id)
     {
-        return $this->db->delete($this->_table, array("customer_id" => $id));
+        return $this->db->delete($this->_table, array("supplier_id" => $id));
     }
 }
